@@ -1,16 +1,16 @@
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "2.0.21"  // Specify a version
+    id("org.jetbrains.kotlin.jvm") version "2.0.21"
     id("java-gradle-plugin")
     id("maven-publish")
-    id("com.gradle.plugin-publish") version "1.2.1" // Use the latest version
+    id("com.gradle.plugin-publish") version "1.2.1"
 }
 
 group = "com.buzzebees.sdk"
 version = "1.0.0"
 
 gradlePlugin {
-    vcsUrl.set("https://github.com/BzbsAndroid") // Replace with actual repo
-    website.set("https://crm.buzzebees.com/")
+    vcsUrl.set("https://github.com/BzbsAndroid/buzzebees-services-plugin")
+    website.set("https://github.com/BzbsAndroid")
     plugins {
         create("services_plugin") {
             id = "com.buzzebees.sdk.services"
@@ -25,12 +25,11 @@ gradlePlugin {
 publishing {
     publications {
         create<MavenPublication>("buzzebeesServicesPluginPublication") {
-            from(components["java"])  // Gradle plugin component
+            from(components["java"])
 
-            // Customize groupId, artifactId, and version
             groupId = "com.buzzebees.sdk"
-            artifactId = "services"   // You can override this
-            version = "1.0.0"             // You can override this version
+            artifactId = "services"
+            version = "1.0.0"
         }
     }
 }
